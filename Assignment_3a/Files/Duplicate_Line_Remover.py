@@ -1,7 +1,7 @@
 
 lines = {}
 
-with open('data.txt', 'r+') as f:
+with open('dat_files/data.txt', 'r+') as f:
 
     buff = f.readline()
 
@@ -14,7 +14,7 @@ with open('data.txt', 'r+') as f:
 
 f.close()
 
-with open('cleaned.txt', 'w') as f:
+with open('dat_files/cleaned.txt', 'w') as f:
 
     for line in lines.values():
         f.write(line)

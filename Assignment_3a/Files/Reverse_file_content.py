@@ -1,7 +1,7 @@
 
 s = []
 
-with open("input.txt", "r+") as f:
+with open("dat_files/input.txt", "r+") as f:
     buff = f.readline()
 
     while buff != "":
@@ -12,7 +12,7 @@ with open("input.txt", "r+") as f:
 
 s = s[::-1]
 
-with open("input.txt", "w") as f:
+with open("dat_files/input.txt", "w") as f:
     for i in s:
         f.write(i + '\n')
 

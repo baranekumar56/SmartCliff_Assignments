@@ -1,7 +1,7 @@
 
 lines = []
 
-with open('bigfile.txt', 'r') as f:
+with open('dat_files/bigfile.txt', 'r') as f:
     lines = f.readlines()
 
 f.close()

@@ -1,0 +1,3 @@
+barane 1
+barane3 1
+barane2 0

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/Ex8/output.css" rel="stylesheet " />
+    <title>Document</title>
+    <style>
+        .side-nav {
+            background-color: rgb(50, 32, 102);
+        }
+    </style>
+</head>
+
+<body>
+    <!--Nav bar-->
+    <div id="navbar" class="primary flex justify-between text-white">
+        
+        <div class="flex justify-center items-center">
+            <img class="max-h-20 max-w-20 object-cover" src="AC_Logo-no-bg.png" />
+        </div>
+        <div class="flex justify-center items-center">
+            <div><button id="toggle" class="p-1 border  rounded-xl mr-5">Toggle</button></div>
+            <div class=" mr-5">Home</div>
+            <div class="mr-5">Profile</div>
+            <div class="mr-5">Logout</div>
+        </div>
+    </div>
+    <div class="flex  text-white w-screen ">
+        <!-- this will be side bar -->
+        <div id="sidebar" class="primary gap-4 lg:w-[15%] h-auto md:h-screen text-white p-4 ">
+            
+            <div class="border-b p-4 border-gray-300 pb-2">Appointments</div>
+            <div class="border-b p-4 border-gray-300 pb-2">History</div>
+            <div class="border-b p-4 border-gray-300 pb-2">Payments</div>
+            <div class="border-b p-4 border-gray-300 pb-2">Issues</div>
+            <div class="border-b p-4 border-gray-300 pb-2">Link 5</div>
+        </div>
+
+        <div class=" lg:w-[85%] m-0 flex flex-col">
+            <!-- Main content div and here we have the nav and main content-->
+
+            <div>
+                <div class="p-5 text-black h-full text-l  ">
+                    <div class="grid p-5 gap-5 sm:grid-cols-3 ">
+
+                        <div class="card">
+                            <div class="stat"> 🚗Total Vehicles Serviced </div>
+                            <div class="stat"> Stat: 1245</div>
+                            <div class="stat"> Sub stat: +8.4% vs last month </div>
+                            <div class="stat"> Description: Total number of cars and bikes serviced this month.
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="stat">⏳Pending Services</div>
+                            <div class="stat"> Stat: 152</div>
+                            <div class="stat"> Sub stat:↓ 5% compared to last week </div>
+                            <div class="stat"> Description: Jobs yet to be completed in the workshop.</div>
+                        </div>
+
+                        <div class="card">
+                            <div class="stat">✅Completed Services</div>
+                            <div class="stat"> Stat: 1093</div>
+                            <div class="stat"> Sub stat:+7.1% this quarter </div>
+                            <div class="stat"> Description: Successfully delivered vehicles after service.</div>
+                        </div>
+                        <div class="card">
+                            <div class="stat">💰 Revenue Generated</div>
+                            <div class="stat"> Stat: ₹1876540</div>
+                            <div class="stat"> Sub stat:↑ 12% this month </div>
+                            <div class="stat"> Description: Total income from all service jobs.</div>
+                        </div>
+                        <div class="card">
+                            <div class="stat">🔧 Spare Parts Used</div>
+                            <div class="stat"> Stat: 782</div>
+                            <div class="stat"> Sub stat:↑ 4.6% usage </div>
+                            <div class="stat "> Description: Number of spare parts replaced in services.</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            const toggler = document.getElementById('toggle');
+            const nav_bar = document.getElementById('navbar');
+            const side_bar = document.getElementById('sidebar');
+            toggler.addEventListener('click' , (e) => {
+                
+                if (nav_bar.classList.contains('primary')) {
+
+                    nav_bar.classList.remove('primary')
+                    side_bar.classList.remove('primary')
+
+                    nav_bar.classList.add('secondary')
+                    side_bar.classList.add('secondary')
+            
+                }else {
+                    nav_bar.classList.remove('secondary')
+                    side_bar.classList.remove('secondary')
+
+                    nav_bar.classList.add('primary')
+                    side_bar.classList.add('primary')
+
+                }
+
+            });
+        </script>
+</body>
+
+</html>

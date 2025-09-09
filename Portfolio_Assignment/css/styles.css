@@ -1,0 +1,106 @@
+* {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0px;
+}
+
+#nav-bar {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 10px;
+}
+
+#nav-bar a{
+    text-decoration-color:yellow ;
+    transition: color 1s ease-in;
+}
+
+nav a {
+    padding: 10px;
+    font-size: x-large;
+    margin: 10px;
+    text-decoration: none;
+    color: #02343F;
+}
+
+
+#nav-bar {
+    background-color: #F0EDCC;
+    color: #02343F;
+}
+
+#greet {
+    background-color: #F0EDCC;
+    color: #02343F;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    height: 100vh;
+}
+
+#greet h1 {
+    font-size: 100px;
+    font-weight: bolder;
+    margin-top: 150px;
+}
+
+#about {
+    background-color: #02343F;
+    color: #F0EDCC;
+    padding: 20px;
+}
+
+#about h2 {
+    text-align: center;
+    font-weight: bolder;
+}
+
+#about div {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+#skills {
+    background-color: #F0EDCC;
+    color:#02343F;
+    padding: 20px;
+
+}
+
+
+#skills > h2 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.domain {
+    text-align: left;
+    padding: 10px;
+
+}
+
+img {
+    height: 80px;
+    width: 80px;
+}
+
+.skill-set {
+    display: flex;
+    flex-direction: column;
+}
+
+.individual-skill {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#projects {
+    background-color: #02343F;
+    height: 100vh;
+    color: #F0EDCC;
+}
+
+#contact {
+    background-color: #F0EDCC;
+    color: #02343F;
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Vehicle Service Center</title>
+</head>
+<body>
+    <h2>Vehicle Service Center</h2>
+    <form id="serviceForm">
+        <label>Name: <input type="text" id="name" required></label><br>
+        <label>Vehicle Type: 
+            <select id="vehicleType">
+                <option>Car</option>
+                <option>Bike</option>
+            </select>
+        </label><br>
+        <label>Model: <input type="text" id="model" required></label><br>
+        <label>Contact: <input type="text" id="contact" required></label><br>
+        <label>Service:
+            <select id="service">
+                <option value="Oil Change">Oil Change - 500</option>
+                <option value="Tire Replacement">Tire Replacement - 1000</option>
+                <option value="Engine Check">Engine Check - 1500</option>
+                <option value="Full Service">Full Service - 3000</option>
+            </select>
+        </label><br>
+        <button type="submit">Book Service</button>
+    </form>
+    <div id="status"></div>
+    <div id="bill"></div>
+
+    <script>
+        const services = {
+            "Oil Change": { price: 500, time: 2000 },
+            "Tire Replacement": { price: 1000, time: 3000 },
+            "Engine Check": { price: 1500, time: 4000 },
+            "Full Service": { price: 3000, time: 5000 }
+        }
+
+        function delay(ms) {
+            return new Promise(res => setTimeout(res, ms))
+        }
+
+        async function processService(customer, service) {
+            const statusDiv = document.getElementById("status")
+            statusDiv.textContent = "Status: Booked"
+            await delay(1000)
+            statusDiv.textContent = "Status: In Progress"
+            await delay(service.time)
+            statusDiv.textContent = "Status: Completed"
+            generateBill(customer, service)
+        }
+
+        function generateBill(customer, service) {
+            const { name, vehicleType, model, contact } = customer
+            const billDiv = document.getElementById("bill")
+            billDiv.innerHTML = `
+                <h3>Final Bill</h3>
+                <p>Name: ${name}</p>
+                <p>Vehicle: ${vehicleType} - ${model}</p>
+                <p>Contact: ${contact}</p>
+                <p>Service: ${service.name}</p>
+                <p>Price: ₹${service.price}</p>
+            `
+        }
+
+        document.getElementById("serviceForm").addEventListener("submit", e => {
+            e.preventDefault()
+            const customer = {
+                name: document.getElementById("name").value,
+                vehicleType: document.getElementById("vehicleType").value,
+                model: document.getElementById("model").value,
+                contact: document.getElementById("contact").value
+            }
+            const serviceName = document.getElementById("service").value
+            const service = { name: serviceName, ...services[serviceName] }
+            processService(customer, service)
+        })
+    </script>
+</body>
+</html>

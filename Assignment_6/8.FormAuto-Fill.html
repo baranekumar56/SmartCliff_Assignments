@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <label>Country:</label>
+        <select id="country">
+            <option value="default">--Default--</option>
+            <option value="USA">USA</option>
+            <option value="India">India</option>
+            <option value="Mexico">Mexico</option>
+        </select><br>
+
+        <label>State</label>
+        <select id="states">
+            <option value="">Please Select a country</option>
+        </select>
+    </div>
+
+    <script>
+        const country = document.getElementById('country');
+        const states = document.getElementById('states');
+
+        const addStates = (statess) =>{
+            states.innerHTML = "";
+            statess.forEach(element => {
+                const option = document.createElement('option');
+                option.value = element;
+                option.textContent = element;
+                states.appendChild(option)
+                states.append(option)
+            });
+        }
+
+        country.addEventListener('change', () => {
+            let c = country.value;
+            console.log(c)
+
+            if (c == 'USA') {   
+                addStates(['New York', 'San Andreas'])
+
+            }else if (c == 'India') {
+                addStates(['Tamil Nadu', 'Kerala'])
+            }else if (c == 'Mexico') {
+                addStates(['Bermuda', 'Als Santos'])
+            }else {
+                addStates(['Please Select a Country'])
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        .disp{
+            display: block;
+        }
+
+        .no-disp{
+            display: none;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div id="question-box">
+        <div class="qa-pair">
+            <h3>How are you?</h3>
+            <p class="no-disp">Im fine</p>
+        </div>
+        <div class="qa-pair">
+            <h3>Where are you?</h3>
+            <p class="no-disp">At home</p>
+        </div>
+    </div>
+
+    <script>
+        const qa_pairs = document.getElementsByClassName('qa-pair');
+        
+        console.log(qa_pairs)
+
+        for (let i = 0; i < qa_pairs.length; i++){
+            (function(index) {
+                qa_pairs[index].addEventListener('click',() => {
+
+                    for (let j = 0; j < qa_pairs.length; j++) {
+                        const answer = qa_pairs[j].querySelector('p');
+                        if (index == j) {
+                            answer.classList.toggle('no-disp')
+                        }else {
+                            answer.classList.add('no-disp')
+                        }
+                    }
+
+                }); 
+            })(i);
+        }
+    
+    </script>
+</body>
+</html>

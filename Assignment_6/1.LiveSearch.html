@@ -1,0 +1,47 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <label>Search: </label>
+    <input id="search" type="text">
+
+    <ul id="products">
+        <li>Laptop</li>
+        <li>Mobile Phone</li>
+        <li>Phone</li>
+        <li>Tablet</li>
+    </ul>
+
+    <script>
+
+        let products = document.querySelectorAll("li");
+
+        let p = document.getElementById("products")
+        const search = document.getElementById("search")
+
+        search.addEventListener("input", () => {
+            let search_key = search.value.toLowerCase();
+
+            p.innerHTML = "";
+
+            
+            products.forEach(element => {
+                if (element.textContent.toLowerCase().includes(search_key)) {
+                    p.append(element)
+                }
+            });
+        })
+        
+
+    </script>
+
+
+</body>
+</html>

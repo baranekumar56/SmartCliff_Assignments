@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Registration</title>
+  <style>
+    .error {
+      color: red;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <h2>User Registration</h2>
+  <form id="registrationForm" novalidate>
+    <label for="name">Name:</label>
+    <input type="text" id="name">
+    <div id="nameError" class="error"></div>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email">
+    <div id="emailError" class="error"></div>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password">
+    <div id="passwordError" class="error"></div>
+
+    <label for="confirmPassword">Confirm Password:</label>
+    <input type="password" id="confirmPassword">
+    <div id="confirmPasswordError" class="error"></div>
+
+    <label for="age">Age:</label>
+    <input type="number" id="age">
+    <div id="ageError" class="error"></div>
+
+    <label>Gender:</label>
+    <input type="radio" name="gender" value="male"> Male
+    <input type="radio" name="gender" value="female"> Female
+    <input type="radio" name="gender" value="other"> Other
+    <div id="genderError" class="error"></div>
+
+    <label>Interests:</label>
+    <input type="checkbox" name="interests" value="coding"> Coding
+    <input type="checkbox" name="interests" value="music"> Music
+    <input type="checkbox" name="interests" value="sports"> Sports
+    <div id="interestsError" class="error"></div>
+
+    <label for="country">Country:</label>
+    <select id="country">
+      <option value="">Select a country</option>
+      <option value="india">India</option>
+      <option value="usa">USA</option>
+      <option value="uk">United Kingdom</option>
+      <option value="australia">Australia</option>
+      <option value="canada">Canada</option>
+    </select>
+    <div id="countryError" class="error"></div>
+
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob">
+    <div id="dobError" class="error"></div>
+
+    <label for="avatar">Profile Picture (.jpg/.png,  2MB): </label>
+    <input type="file" id="avatar" accept=".jpg,.jpeg,.png">
+    <div id="avatarError" class="error"></div>
+
+    <label for="bio">Bio (max 200 chars):</label>
+    <textarea id="bio" maxlength="200"></textarea>
+    <div id="bioError" class="error"></div>
+
+    <button type="submit">Register</button>
+  </form>
+
+  <script>
+    const setError = (id, msg) => {
+      document.getElementById(id).textContent = msg;
+    };
+
+    const clearError = id => {
+      document.getElementById(id).textContent = "";
+    };
+
+    const validators = {
+      name: () => {
+        const val = document.getElementById("name").value.trim();
+        val ? clearError("nameError") : setError("nameError", "Name is required");
+      },
+      email: () => {
+        const val = document.getElementById("email").value.trim();
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        regex.test(val) ? clearError("emailError") : setError("emailError", "Enter a valid email");
+      },
+      password: () => {
+        const val = document.getElementById("password").value;
+        const regex = /^(?=.*[A-Z])(?=.*\d).{6,}$/;
+        regex.test(val) ? clearError("passwordError") : setError("passwordError", "At least 6 chars, 1 uppercase, 1 number");
+        validators.confirmPassword();
+      },
+      confirmPassword: () => {
+        const pass = document.getElementById("password").value;
+        const confirm = document.getElementById("confirmPassword").value;
+        pass === confirm ? clearError("confirmPasswordError") : setError("confirmPasswordError", "Passwords do not match");
+      },
+      age: () => {
+        const val = parseInt(document.getElementById("age").value, 10);
+        if (!val || val < 18 || val > 60) setError("ageError", "Age must be between 18 and 60");
+        else clearError("ageError");
+      },
+      gender: () => {
+        const val = document.querySelector('input[name="gender"]:checked');
+        val ? clearError("genderError") : setError("genderError", "Select a gender");
+      },
+      interests: () => {
+        const val = document.querySelectorAll('input[name="interests"]:checked');
+        val.length > 0 ? clearError("interestsError") : setError("interestsError", "Select at least one interest");
+      },
+      country: () => {
+        const val = document.getElementById("country").value;
+        val ? clearError("countryError") : setError("countryError", "Select a country");
+      },
+      dob: () => {
+        const val = document.getElementById("dob").value;
+        if (!val) {
+          setError("dobError", "Date of birth is required");
+          return;
+        }
+        const today = new Date();
+        const dobDate = new Date(val);
+        let age = today.getFullYear() - dobDate.getFullYear();
+        const m = today.getMonth() - dobDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < dobDate.getDate())) age--;
+        age >= 18 ? clearError("dobError") : setError("dobError", "You must be at least 18 years old");
+      },
+      avatar: () => {
+        const file = document.getElementById("avatar").files[0];
+        if (!file) {
+          setError("avatarError", "Profile picture is required");
+          return;
+        }
+        const allowed = ["image/jpeg", "image/png"];
+        if (!allowed.includes(file.type) || file.size > 2 * 1024 * 1024) {
+          setError("avatarError", "Must be .jpg/.png and <2MB");
+        } else clearError("avatarError");
+      },
+      bio: () => {
+        const val = document.getElementById("bio").value.trim();
+        val.length <= 200 ? clearError("bioError") : setError("bioError", "Bio cannot exceed 200 characters");
+      }
+    };
+
+    document.getElementById("name").addEventListener("input", validators.name);
+    document.getElementById("email").addEventListener("input", validators.email);
+    document.getElementById("password").addEventListener("input", validators.password);
+    document.getElementById("confirmPassword").addEventListener("input", validators.confirmPassword);
+    document.getElementById("age").addEventListener("input", validators.age);
+    document.querySelectorAll('input[name="gender"]').forEach(el => el.addEventListener("change", validators.gender));
+    document.querySelectorAll('input[name="interests"]').forEach(el => el.addEventListener("change", validators.interests));
+    document.getElementById("country").addEventListener("change", validators.country);
+    document.getElementById("dob").addEventListener("change", validators.dob);
+    document.getElementById("avatar").addEventListener("change", validators.avatar);
+    document.getElementById("bio").addEventListener("input", validators.bio);
+
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      Object.values(validators).forEach(fn => fn());
+      if (document.querySelectorAll(".error:not(:empty)").length === 0) {
+        alert("Form submitted successfully!");
+        form.reset();
+      }
+    });
+  </script>
+</body>
+</html>

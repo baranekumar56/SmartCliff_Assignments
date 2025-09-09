@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>FeedBack:</label><br>
+    <textarea id="feedback" rows="5" cols="20" placeholder="your feedback"></textarea>
+    <p id="remaining"></p>
+    <p id="warning"></p>
+    <script>
+        const feedback = document.getElementById("feedback");
+        const remaining = document.getElementById("remaining");
+        const warning = document.getElementById("warning");
+
+        feedback.addEventListener('input', (e) => {
+            const char_count = e.target.value.length;
+            console.log(char_count)
+            if (char_count <= 100) {
+                warning.style.display = "none";
+                remaining.style.display = "block"
+                remaining.textContent = `Remaining characters: ${100 - char_count}`;
+            }else {
+                remaining.style.display = "none";
+                warning.style.display  = "block";
+                warning.style.color = 'red';
+                warning.textContent = `Limit exceeded, Remove ${char_count - 100} characters`;
+            }
+        })
+    </script>
+</body>
+</html>

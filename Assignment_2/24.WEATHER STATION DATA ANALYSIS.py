@@ -31,9 +31,26 @@ def get_exceeding_datapoints(hourly_temperature, hourly_humidity, temperature_th
     for i in hourly_temperature:
         if i > temperature_threshold: exceeded_temperatures.append(i)
 
-    for i in hou
+    for i in hourly_humidity
+        if i > humidity_threshold: exceeded_humidity.append(i)
+
+    return exceeded_humidity, exceeded_temperatures
+
+
+def main():
+    temp_readings = list(map(int, input().split()))
+    humi_readings = list(map(int, input().split()))
+
+    temp_threshold = int(input())
+    humi_threshold = int(input())
+
+    print(get_maxmin_temperature_and_humidity(temp_readings, humi_readings))
+    print(get_avg_temperature_and_humidity(temp_readings, humi_readings))
+    print(get_exceeding_datapoints(temp_readings, humi_readings, temp_threshold, humi_threshold))
 
 
 
+if __name__ == "__main__":
+    main()
 
 

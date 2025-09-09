@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>Enter no of rows: </label><input type="number" id="rows"><br>
+    <label>Enter no of cols: </label><input type="number" id="cols"><br>
+
+    <button>Generate Tables</button>
+
+    <table id="dynammic-table">
+
+    </table>
+
+    <script>
+        const button = document.getElementsByTagName('button')[0];
+
+        button.addEventListener('click', () => {
+            const rows = document.getElementById('rows').value;
+            const cols = document.getElementById('cols').value;
+
+            const table = document.getElementById("dynammic-table");
+            table.style.cssText = "border:2px solid black";
+            table.style.borderCollapse = "collapse";
+
+            table.innerHTML = "";
+
+            // i need to generate cols td
+
+            for (let i = 0; i < rows; i++) {
+                const rw = document.createElement('tr');
+                for (let j = 0; j < cols; j++) {
+                    const rd = document.createElement('td');
+                    rd.innerText = `Cell ${i*cols + j + 1}`;
+                    rd.style.border = "1px solid black";
+                    rw.append(rd);
+                }
+                table.append(rw)
+            }
+
+        })
+    </script>
+    
+</body>
+</html>

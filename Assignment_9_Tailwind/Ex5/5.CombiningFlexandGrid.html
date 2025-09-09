@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/Ex5/output.css" rel="stylesheet" />
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="grid w-screen p-5 gap-5 sm:grid-cols-3 ">
+        
+        <div class="card">
+           <div class="stat"> 🚗Total Vehicles Serviced </div>
+           <div class="stat"> Stat: 1245</div>
+           <div class="stat"> Sub stat: +8.4% vs last month </div>
+           <div class="stat"> Description: Total number of cars and bikes serviced this month.</div>
+        </div>
+
+        <div class="card">
+            <div class="stat">⏳Pending Services</div>
+           <div class="stat"> Stat: 152</div>
+           <div class="stat"> Sub stat:↓ 5% compared to last week </div>
+           <div class="stat"> Description: Jobs yet to be completed in the workshop.</div>
+        </div>
+
+        <div class="card">
+            <div class="stat">✅Completed Services</div>
+           <div class="stat"> Stat: 1093</div>
+           <div class="stat"> Sub stat:+7.1% this quarter </div>
+           <div class="stat"> Description: Successfully delivered vehicles after service.</div>
+        </div>
+        <div class="card">
+           <div class="stat">💰 Revenue Generated</div>
+           <div class="stat"> Stat: ₹1876540</div>
+           <div class="stat"> Sub stat:↑ 12% this month </div>
+           <div class="stat"> Description: Total income from all service jobs.</div>
+        </div>
+        <div class="card">
+            <div class="stat">🔧 Spare Parts Used</div>
+           <div class="stat"> Stat: 782</div>
+           <div class="stat"> Sub stat:↑ 4.6% usage </div>
+           <div class="stat "> Description: Number of spare parts replaced in services.</div>
+        </div>
+
+    </div>
+
+   <script>
+    const dat = [
+  {
+    "icon": "🚗",
+    "title": "Total Vehicles Serviced",
+    "mainStat": "1245",
+    "subStat": "+8.4% vs last month",
+    "description": "Total number of cars and bikes serviced this month."
+  },
+  {
+    "icon": "⏳",
+    "title": "Pending Services",
+    "mainStat": "152",
+    "subStat": "↓ 5% compared to last week",
+    "description": "Jobs yet to be completed in the workshop."
+  },
+  {
+    "icon": "✅",
+    "title": "Completed Services",
+    "mainStat": "1093",
+    "subStat": "+7.1% this quarter",
+    "description": "Successfully delivered vehicles after service."
+  },
+  {
+    "icon": "💰",
+    "title": "Revenue Generated",
+    "mainStat": "₹1876540",
+    "subStat": "↑ 12% this month",
+    "description": "Total income from all service jobs."
+  },
+  {
+    "icon": "🔧",
+    "title": "Spare Parts Used",
+    "mainStat": "782",
+    "subStat": "↑ 4.6% usage",
+    "description": "Number of spare parts replaced in services."
+  },
+  {
+    "icon": "🧑‍🔧",
+    "title": "Mechanic Efficiency",
+    "mainStat": "89%",
+    "subStat": "+3% improvement",
+    "description": "Average task completion rate by mechanics."
+  },
+  {
+    "icon": "🛠️",
+    "title": "Most Requested Service",
+    "mainStat": "Oil Change (420)",
+    "subStat": "↑ 10% demand",
+    "description": "The most commonly booked service type."
+  },
+  {
+    "icon": "⭐",
+    "title": "Customer Feedback",
+    "mainStat": "4.6/5",
+    "subStat": "↑ 0.2 rating vs last month",
+    "description": "Average rating from serviced customers."
+  },
+  {
+    "icon": "📅",
+    "title": "Today's Bookings",
+    "mainStat": "78",
+    "subStat": "↑ 6% higher than yesterday",
+    "description": "Vehicles booked for service today."
+  },
+  {
+    "icon": "🏭",
+    "title": "Workshop Uptime",
+    "mainStat": "99.2%",
+    "subStat": "Stable operations",
+    "description": "Availability of workshop and equipment."
+  }
+]
+
+    </script>
+</body>
+</html>

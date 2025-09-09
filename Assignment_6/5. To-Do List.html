@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <label>Add task: </label>
+    <input type="text" id="task-adder"  />
+    <button id="submit">Add Task</button>
+    <div id="tasks"></div>
+
+    <script>
+        const input_text = document.getElementById("task-adder");
+        const button = document.getElementById("submit")
+        const tasks = document.getElementById("tasks")
+
+        let element_id = 0;
+
+        button.addEventListener("click", (e)=>{
+            const input = document.createElement("input")
+            input.value = input_text.value;
+            input_text.value = "";
+            input.setAttribute('id', `${element_id}`)
+            input.setAttribute('class', `${element_id}`)
+            input.readOnly = true;
+
+
+            const edit_button = document.createElement("button")
+            edit_button.innerText = "Edit";
+            edit_button.setAttribute('class',  `${element_id}`)
+            edit_button.value = `${element_id}`;
+            edit_button.addEventListener('click', () => {
+                if (edit_button.innerText === "Edit"){
+                    edit_button.innerText = "✔";
+                    const input_tag = document.getElementById(edit_button.value);
+                    input_tag.readOnly = !input_tag.readOnly
+                }else {
+                    edit_button.innerText = "Edit";
+                    const input_tag = document.getElementById(edit_button.value);
+                    input_tag.readOnly = !input_tag.readOnly
+                }
+            })
+
+            const delete_button = document.createElement('button');
+            delete_button.innerText = "Delete";
+            delete_button.setAttribute('class',  `${element_id}`);
+            delete_button.value = element_id;
+
+            const div = document.createElement('div')
+            div.setAttribute('id', `div-${element_id}`)
+
+            delete_button.addEventListener('click', () => {
+                document.getElementById(`div-${delete_button.value}`).remove()
+            })
+
+            
+            div.append(input)
+            div.append(edit_button)
+            div.append(delete_button)
+
+            tasks.append(div)
+            element_id++;
+
+            
+        })
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .side-nav-links {
+        @apply p-2 font-medium text-white ;
+    }
+
+    .card {
+        @apply inline flex flex-col shadow-2xl text-wrap break-words overflow-x-hidden;
+    }
+
+    .stat {
+        @apply font-semibold p-2 break-words;
+    }
+
+}
+
+@layer utilities {
+    .primary {
+        background-color: rgb(50, 32, 102) ;
+    }
+
+    .secondary {
+        background-color: #EADDCA;
+    }
+
+}

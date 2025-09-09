@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div>
+        Flash Sale 
+        <p>Time left: </p>
+        <span id="remaining-time"></span>
+    </div>
+
+    <script>
+        let count_down = 60;
+        const remaining_time = document.getElementById('remaining-time');
+        
+
+        async function loop(){
+            
+            const interval = setInterval(() => {
+                remaining_time.innerText = `${count_down}`
+                count_down--;
+                if (count_down == -1) { remaining_time.innerText = "Sale Have been Ended...";clearInterval(interval);  }
+            }, 1000);
+
+        }
+
+        loop()
+
+    </script>
+    
+</body>
+</html>
